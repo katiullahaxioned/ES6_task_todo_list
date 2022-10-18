@@ -82,6 +82,15 @@ sub { bottom: -.25em; }
 .cf { *zoom: 1; }
 
 /*for all*/
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+
 body {
   box-sizing: border-box;
   font-family: sans-serif;
@@ -97,58 +106,176 @@ li {
   list-style-type: none;
 }
 
+span { display: inline-block; }
+input[type] { outline: none; }
+
+::placeholder {
+  text-transform: capitalize;
+  color: #777;
+}
+
 /*for wrapper*/
 .wrapper {
-  max-width: 1360px;
+  max-width: 1366px;
   width: 86%; 
   margin: 0 auto;
 }
-/*=================================
-  Header styling starts here
-=================================*/
-
-
-
-
-
-
-/*=================================
-  Header styling ends here
-=================================*/  
 
 /*=================================
   main styling starts here
 =================================*/
 
+.todo__wrapper {
+  width: 100%;
+  max-height: 100vh;
+  height: 100vh;
+  padding: 50px 3%;
+  display: flex;
+  overflow: hidden;
+  align-items: center;
+  background-color: #597494;
+  flex-direction: column;
+  gap: 20px;
+}
 
+.todo__wrapper > * {
+  width: 35%;
+  border-radius: 5px;
+  overflow: hidden;
+}
 
+.todo__heading {
+  color: #fff;
+  font-size: 26px;
+  font-weight: 600;
+  letter-spacing: 1px;
+  text-align: center;
+  text-transform: capitalize;
+}
 
+.todo__form {
+  display: flex;
+}
 
+.todo__form--group { width: 80%; }
+.todo__form--control { width: 20%;}
 
+.todo__form input {
+  width: 100%;
+  padding: 12px 10px;
+  border: none;
+  font-size: 15px;
+}
 
+.todo__form--control > * {
+  background-color: #222;
+  color: #ddd;
+  font-weight: 600;
+  text-transform: uppercase;
+  transition: background-color .3s;
+  pointer-events: none;
+  opacity: .8;
+}
+
+.todo__form--control > *.active {
+  pointer-events: all;
+  opacity: 1;
+}
+
+.todo__form--group > * {
+  background-color: #f7f7f7;
+  color: #111;
+  letter-spacing: 1px;
+}
+
+.todo__form--control > *:hover { background-color: #000; }
+
+.todo__lists {
+  max-height: 350px;
+  display: flex;
+  overflow-y: auto;
+  background-color: #111;
+  flex-direction: column;
+  gap: 3px;
+  scrollbar-width: thin;
+}
+
+.todo__lists::-webkit-scrollbar { width: 6px; }
+
+.todo__lists::-webkit-scrollbar-thumb {
+  border-radius: 0 5px 5px 0;
+  background-color: #555;
+}
+
+.todo__lists--item {
+  padding: 10px;
+  display: flex;
+  align-items: center;
+  background-color: #3c3e3f;
+  gap: 15px;
+  justify-content: space-between;
+}
+
+.todo__lists--text {
+  color: #fff;
+  word-break: break-all;
+}
+
+.todo__lists--delete {
+  width: 20px;
+  height: 20px;
+  position: relative;
+  color: #df1c1c;
+  cursor: pointer;
+  flex-shrink: 0;
+  font-size: 18px;
+  text-indent: -99999px;
+  border-radius: 5px;
+  transition: background-color .3s;
+}
+
+.todo__lists--delete:hover {
+  background-color: #df1c1c;
+  color: #fff;
+}
+
+.todo__lists--delete::before {
+  content: "\f014";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  font-family: "fontAwesome";
+  text-indent: 0;
+  transform: translate(-50%,-50%);
+  transition: color .3s;
+}
 
 /*=================================
   main styling ends here
 =================================*/
 
+/* ============================= */
+
 /*=================================
-  footer styling starts here
-=================================*/ 
+  media query starts
+=================================*/
 
+/*media query for 1024px starts here*/
+@media only screen and (max-width: 1024px) {
+  .todo__wrapper > * { width: 50%; }
+}
 
+/*media query for 767px starts here*/
+@media only screen and (max-width: 767px) {
+  .todo__wrapper > * { width: 75%; }
+}
 
+/*media query for 540px starts here*/
+@media only screen and (max-width: 540px) {
+  .todo__wrapper > * { width: 90%; }
+}
 
-
-
-
- /*=================================
-  footer styling ends here
-=================================*/ 
-
-/*media query starts*/
-/*media query for 995px starts here*/
-@media only screen and (max-width: 995px) {
-
-
-
-}  
+/*media query for 480px starts here*/
+@media only screen and (max-width: 480px) {
+  .todo__wrapper > * { width: 100%; }
+}
