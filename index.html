@@ -23,10 +23,15 @@
               <input type="text" name="todoInput" placeholder="todo..." autocomplete="off">
             </div>
             <div class="todo__form--control">
-              <input type="submit" value="add">
+              <input type="button" class="add-btn" value="add">
+              <input type="button" class="update-btn" value="update">
             </div>
           </form>
           <ul class="todo__lists"></ul>
+          <div class="todo__active">
+            <span class="todo__active--text">pending todo's : <span class="todo__active--count">0</span></span>
+            <span class="todo__delete--all">delete all</span>
+          </div>
         </div>
       </section>
     </main>
