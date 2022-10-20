@@ -16,6 +16,8 @@ const deleteTodo = () => {
   deleteBtn.forEach((del) => {
     del.addEventListener("click", () => {
       const dataIndex = del.dataset.idx;
+      todoAdd.classList.remove("hide");
+      todoUpdate.classList.remove("active");
 
       todoArr.splice(dataIndex, 1);
       localStorage.setItem("todo", JSON.stringify(todoArr));
