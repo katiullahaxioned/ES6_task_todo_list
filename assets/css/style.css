@@ -158,7 +158,7 @@ input[type] { outline: none; }
 }
 
 .todo__form--group { width: 80%; }
-.todo__form--control { width: 20%;}
+.todo__form--control { width: 20%; }
 
 .todo__form input {
   width: 100%;
@@ -173,14 +173,21 @@ input[type] { outline: none; }
   font-weight: 600;
   text-transform: uppercase;
   transition: background-color .3s;
-  pointer-events: none;
-  opacity: .8;
 }
 
-.todo__form--control > *.active {
-  pointer-events: all;
-  opacity: 1;
+.add-btn {
+  opacity: .8;
+  pointer-events: none;
 }
+
+.add-btn.active {
+  opacity: 1;
+  pointer-events: all;
+}
+
+.update-btn { display: none; }
+.update-btn.active { display: block; }
+.hide { display: none; }
 
 .todo__form--group > * {
   background-color: #f7f7f7;
@@ -210,10 +217,20 @@ input[type] { outline: none; }
 .todo__lists--item {
   padding: 10px;
   display: flex;
-  align-items: center;
   background-color: #3c3e3f;
-  gap: 15px;
+  gap: 10px;
   justify-content: space-between;
+}
+
+.todo__lists--item > * {
+  display: flex;
+  gap: 10px;
+}
+ 
+.todo__lists--count {
+  color: #fff;
+  font-size: 15px;
+  font-weight: 600;
 }
 
 .todo__lists--text {
@@ -221,11 +238,12 @@ input[type] { outline: none; }
   word-break: break-all;
 }
 
-.todo__lists--delete {
+.todo__lists--delete,
+.todo__lists--edit {
   width: 20px;
   height: 20px;
   position: relative;
-  color: #df1c1c;
+  background-color: #fff;
   cursor: pointer;
   flex-shrink: 0;
   font-size: 18px;
@@ -234,13 +252,21 @@ input[type] { outline: none; }
   transition: background-color .3s;
 }
 
+.todo__lists--delete { color: #df1c1c; }
+.todo__lists--edit { color: #039703; }
+
 .todo__lists--delete:hover {
   background-color: #df1c1c;
   color: #fff;
 }
 
-.todo__lists--delete::before {
-  content: "\f014";
+.todo__lists--edit:hover {
+  background-color: #039703;
+  color: #fff;
+}
+
+.todo__lists--delete::before,
+.todo__lists--edit::before {
   position: absolute;
   top: 50%;
   left: 50%;
@@ -249,6 +275,44 @@ input[type] { outline: none; }
   transform: translate(-50%,-50%);
   transition: color .3s;
 }
+
+.todo__lists--delete::before { content: "\f014"; }
+.todo__lists--edit::before { content: "\f040"; }
+
+.todo__active {
+  padding: 10px;
+  display: flex;
+  align-items: center;
+  background-color: #111;
+  color: #fff;
+  justify-content: space-between;
+  text-transform: capitalize;
+}
+
+.todo__active--count {
+  margin-left: 10px;
+  font-size: 18px;
+  font-weight: 600;
+  letter-spacing: 1px;
+}
+
+.todo__delete--all {
+  padding: 5px 8px;
+  border-radius: 5px;
+  background-color: #df1c1c;
+  cursor: pointer;
+  font-weight: 600;
+  opacity: .7;
+  pointer-events: none;
+  transition: background-color .3s;
+}
+
+.todo__delete--all.active {
+  opacity: 1;
+  pointer-events: all;
+}
+
+.todo__delete--all:hover { background-color: #ff0000; }
 
 /*=================================
   main styling ends here
